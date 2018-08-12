@@ -1,0 +1,129 @@
+<div class="col-md-9 contentArea">
+  <div class="row">
+    <div class="col-md-9">
+      <ul style="list-style: none;">
+        <li class="lists">
+          <div class="checkbox">
+            <input class="styled-checkbox" checked="checked" id="styled-checkbox-1" type="checkbox" value="value1">
+            <label for="styled-checkbox-1">Checkbox</label>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="checkbox">
+            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3" disabled>
+            <label for="styled-checkbox-3">A disabled checkbox</label>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="radio">
+            <input id="radio-1" name="radio" type="radio" checked>
+            <label for="radio-1" class="radio-label">Checked</label>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="radio">
+            <input id="radio-2" name="radio" type="radio">
+            <label for="radio-2" class="radio-label">Unchecked</label>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="radio">
+            <input id="radio-3" name="radio" type="radio" disabled>
+            <label for="radio-3" class="radio-label">Disabled</label>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="textbox">
+            <label for="firstName" class="form-group">First Name:</label>
+            <input name="textbox" type="text" class="form-control" />
+          </div>
+        </li>
+        <li class="lists">
+          <label for="search" class="form-group">Search Box: </label>
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">all</span>
+          </div>
+        </li>
+        <li class="lists">
+          <label for="btn1" class="form-group">Buttons With Icon: </label>
+          <div>
+            <button class="btn btn-medspeer">
+        <i class="fa fa-paper-plane timeline-icon"></i> Feedback
+      </button>
+          </div>
+        </li>
+        <li class="lists">
+          <label for="btn1" class="form-group">Buttons: </label>
+          <div>
+            <button class="btn btn-medspeer">Submit</button>
+          </div>
+        </li>
+        <li class="lists">
+          <div class="form-group">
+            <label for="comment">Text Area:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+        </li>
+        <li class="lists">
+          <label for="btn1" class="form-group">Text Editor: </label>
+          <div>
+
+          </div>
+          <div [innerHTML]="mycontent"></div>
+        </li>
+        <li class="lists">
+          <label for="btn1" class="form-group">Image Uploader (base 64): </label>
+          <div>
+          <div class="file-upload">
+              <label for="upload" class="file-upload__label">Choose Image</label>
+              <input class="file-upload__input" type="file" (change)="fileChangeEvent($event)" name="file-upload">
+            </div>
+          <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3" [resizeToWidth]="128"
+            format="png" (imageCroppedBase64)="imageCropped($event)" (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+          <img [src]="croppedImage" />
+          </div>
+        </li>
+        <li class="lists">
+          <label for="btn1" class="form-group">File Uploader: </label>
+          <div>
+            <div class="file-upload">
+              <label for="upload" class="file-upload__label">Choose File</label>
+              <input id="upload" class="file-upload__input" type="file" (change)="selectFile($event)" name="file-upload">
+            </div>
+            <button class="btn btn-medspeer" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+          </div>
+        </li>
+        <li class="lists">
+          <h3 class="h3">
+            <label for="btn1" class="form-group">Select Drop down Items: </label>
+          </h3>
+          <div class="form-group m-form__group row">
+            <label class="col-form-label col-lg-3 col-sm-12">
+								Single Select
+							</label>
+            <div>
+              <ng-select [allowClear]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+                (removed)="removed($event)" (typed)="typed($event)" placeholder="No city selected">
+              </ng-select>
+            </div>
+          </div>
+          <div>
+            {{value.text}}
+          </div>
+          <div class="form-group m-form__group row">
+            <div>
+              <h3>Select multiple cities</h3>
+              <ng-select [multiple]="true" [items]="items" [disabled]="disabled" (data)="refreshValue($event)" (selected)="selected($event)"
+                (removed)="removed($event)" placeholder="No city selected"></ng-select>
+              <!--<pre>{{itemsToString(value)}}</pre>-->
+            </div>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>
